@@ -2,6 +2,8 @@
 
 <md-content>
   <md-tabs md-dynamic-height="" md-border-bottom="">
+
+    <!-- First Tab - List Layout -->
     <md-tab>
       <md-tab-label>
         <i class="material-icons">view_list</i>
@@ -21,7 +23,7 @@
               <md-list-item class="md-3-line" ng-repeat="person in peopleData | filter:personSearch">
                 <img ng-src="{{person.user.picture.thumbnail}}" class="md-avatar" alt="{{person.user.username}}"/>
                 <div class="md-list-item-text">
-                  <h3><i class="material-icons" style="font-size:18px;">person</i> {{person.user.name.first}} - {{person.user.name.last}}</h3>
+                  <h3><i class="material-icons" style="font-size:18px;">person</i> {{person.user.name.first| capitalize}} {{person.user.name.last | capitalize}}</h3>
                   <h4><i class="material-icons" style="font-size:18px;">phone</i> {{person.user.phone}}</h4>
                   <p><i class="material-icons" style="font-size:18px;">email</i> {{person.user.email}}</p>
                 </div>
@@ -32,45 +34,30 @@
         </md-content>
       </md-tab-body>
     </md-tab>
+
+    <!-- Second Tab - Card Layout -->
     <md-tab>
       <md-tab-label>
         <i class="material-icons">view_module</i>
       </md-tab-label>
       <md-tab-body>
-        <md-content class="md-padding" layout-xs="column" layout="row">
-           <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="person in peopleData">
-             <md-card>
-               <md-card-header>
-                 <md-card-avatar>
-                   <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
-                 </md-card-avatar>
-                 <md-card-header-text>
-                   <span class="md-title">Title</span>
-                   <span class="md-subhead">subhead</span>
-                 </md-card-header-text>
-               </md-card-header>
-               <img ng-src="{{imagePath}}" class="md-card-image" alt="tech image">
-               <md-card-title>
-                 <md-card-title-text>
-                   <span class="md-headline">In-card actions</span>
-                   <span class="md-subhead">Description</span>
-                 </md-card-title-text>
-               </md-card-title>
-               <md-card-actions layout="row" layout-align="start center">
-                 <md-button>Action 1</md-button>
-                 <md-button>Action 2</md-button>
-               </md-card-actions>
-               <md-card-content>
-                 <p>
-                   The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                   two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-                 </p>
-               </md-card-content>
-             </md-card>
-           </div>
-         </md-content>
+         <div class='md-padding' layout="row" layout-wrap>
+          <md-card style="width: 350px;" ng-repeat="person in peopleData">
+            <img src="{{person.user.picture.large}}" style="width: 350px; height:350px;" class="md-card-image" alt="{{person.user.username}}'s avatar">
+            <md-card-content>
+              <h2>{{person.user.name.title | capitalize}} {{person.user.name.first | capitalize}} {{person.user.name.last | capitalize}}</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="end center">
+              <md-button>Save</md-button>
+              <md-button>View</md-button>
+            </div>
+          </md-card>
+        </div>
       </md-tab-body>
     </md-tab>
+
+    <!-- Third Tab - Quilt Layout -->
     <md-tab>
       <md-tab-label>
         <i class="material-icons">view_quilt</i>
@@ -84,7 +71,7 @@
                           md-colspan-sm="1">
 
             <img ng-src="{{person.user.picture.medium}}" class="md-avatar" alt="{{person.user.username}}"/>
-            <md-grid-tile-footer><h3>{{person.user.name.title}} {{person.user.name.first}} {{person.user.name.last}} ({{person.user.username}})</h3></md-grid-tile-footer>
+            <md-grid-tile-footer><h3>{{person.user.name.title}} {{person.user.name.first}} {{person.user.name.last}} <span style="color: #e3e3e3">@{{person.user.username}}</span></h3></md-grid-tile-footer>
           </md-grid-tile>
         </md-grid-list>
       </md-tab-body>
