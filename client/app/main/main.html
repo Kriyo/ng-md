@@ -1,0 +1,91 @@
+<div ng-include="'components/shell/shell.html'"></div>
+
+<md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px">
+  <md-grid-tile ng-repeat="thing in awesomeThings" ng-class="getColor($index)" md-rowspan="{{getSpan($index)}}"
+                  md-colspan="{{getSpan($index)}}"
+                  md-colspan-sm="1">
+
+    <md-button aria-label="Remove item" class="md-icon-button delete-btn" ng-click="deleteThing(thing)">
+      <md-icon style="fill: #fff" md-svg-icon="action:delete"></md-icon>
+    </md-button>
+
+    <md-icon class="avatar-icon" md-svg-icon="avatar:svg-{{ ($index + 1) % 11 }}"></md-icon>
+    <md-grid-tile-footer><h3>{{thing.name}}</h3></md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>
+
+
+<!-- <ul>
+  <li ng-repeat="person in peopleData">{{person.user.name.first}} - {{person.user.name.last}}</li>
+  <img ng-src="{{user.picture.medium}}" class="md-avatar"/>
+</ul> -->
+
+<md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px">
+  <md-grid-tile ng-repeat="person in peopleData" ng-class="getColor($index)" md-rowspan="{{getSpan($index)}}"
+                  md-colspan="{{getSpan($index)}}"
+                  md-colspan-sm="1">
+
+    <img ng-src="{{person.user.picture.medium}}" class="md-avatar" alt="{{person.user.username}}"/>
+    <md-grid-tile-footer><h3>{{person.user.name.title}} {{person.user.name.first}} {{person.user.name.last}} ({{person.user.username}})</h3></md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>
+
+<md-content>
+    <md-list>
+      <md-subheader class="md-no-sticky">List of Users</md-subheader>
+      <md-list-item class="md-3-line" ng-repeat="person in peopleData">
+        <img ng-src="{{person.user.picture.thumbnail}}" class="md-avatar" alt="{{person.user.username}}"/>
+        <div class="md-list-item-text" layout="column">
+          <h3>{{person.user.name.first}} - {{person.user.name.last}}</h3>
+          <h4>{{ item.what }}</h4>
+          <p>{{ item.notes }}</p>
+        </div>
+      </md-list-item>
+      <md-divider ></md-divider>
+      <md-subheader class="md-no-sticky">2 line item</md-subheader>
+      <md-list-item class="md-2-line">
+      <img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}" />
+        <div class="md-list-item-text">
+          <h3>{{ todos[0].who }}</h3>
+          <p>Secondary text</p>
+        </div>
+      </md-list-item>
+      <md-divider ></md-divider>
+      <md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
+      <md-list-item class="md-3-line md-long-text">
+        <img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
+        <div class="md-list-item-text">
+          <h3>{{ todos[0].who }}</h3>
+          <p>
+            Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
+            Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
+            velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+          </p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-3-line md-long-text">
+        <img ng-src="{{todos[1].face}}?25" class="md-avatar" alt="{{todos[1].who}}" />
+        <div class="md-list-item-text">
+          <h3>{{ todos[1].who }}</h3>
+          <p>
+            Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.
+            Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum
+            velit. Class aptent taciti sociosqu ad litra torquent per conubia nostra, per inceptos himenaeos.
+          </p>
+        </div>
+      </md-list-item>
+      <md-divider ></md-divider>
+      <md-subheader class="md-no-sticky">Classes</md-subheader>
+      <md-list-item class="md-2-line" ng-repeat="phone in phones">
+        <md-icon md-svg-icon="communication:phone" ng-if="$index !== 2" ng-class="{'md-avatar-icon': $index === 1}"></md-icon>
+        <div class="md-list-item-text" ng-class="{'md-offset': $index == 2 }">
+          <h3> {{ phone.number }} </h3>
+          <p> {{ phone.type }} </p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
