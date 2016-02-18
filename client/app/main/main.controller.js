@@ -4,6 +4,7 @@ angular.module('mdSandboxApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.awesomeThings = [];
     $scope.peopleData = [];
+    $scope.imagePath = 'http://lorempixel.com/400/227/technics/';
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;

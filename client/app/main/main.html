@@ -1,5 +1,5 @@
-<div ng-include="'components/shell/shell.html'"></div>
-
+<!-- <div ng-include="'components/shell/shell.html'"></div> -->
+<!--
 <md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter="8px" md-gutter-gt-sm="4px">
@@ -14,14 +14,72 @@
     <md-icon class="avatar-icon" md-svg-icon="avatar:svg-{{ ($index + 1) % 11 }}"></md-icon>
     <md-grid-tile-footer><h3>{{thing.name}}</h3></md-grid-tile-footer>
   </md-grid-tile>
-</md-grid-list>
+</md-grid-list> -->
 
+<md-toolbar md-scroll-shrink="" ng-if="true" ng-controller="TitleController">
+    <div class="md-toolbar-tools">
+      <h3>
+        <span>People List</span>
+      </h3>
+    </div>
+  </md-toolbar>
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+    <div>
+      <md-input-container>
+        <label>Search Person</label>
+        <input ng-model="personSearch">
+      </md-input-container>
+    </div>
+  </md-content>
+  <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="person in peopleData | filter:personSearch">
+        <img ng-src="{{person.user.picture.thumbnail}}" class="md-avatar" alt="{{person.user.username}}"/>
+        <div class="md-list-item-text">
+          <h3><i class="material-icons" style="font-size:18px;">person</i> {{person.user.name.first}} - {{person.user.name.last}}</h3>
+          <h4><i class="material-icons" style="font-size:18px;">phone</i> {{person.user.phone}}</h4>
+          <p><i class="material-icons" style="font-size:18px;">email</i> {{person.user.email}}</p>
+        </div>
+        <md-divider inset=""></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
 
-<!-- <ul>
-  <li ng-repeat="person in peopleData">{{person.user.name.first}} - {{person.user.name.last}}</li>
-  <img ng-src="{{user.picture.medium}}" class="md-avatar"/>
-</ul> -->
+ <!-- Do this view later -->
+  <!-- <md-content class="md-padding" layout-xs="column" layout="row">
+     <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="person in peopleData">
+       <md-card>
+         <md-card-header>
+           <md-card-avatar>
+             <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+           </md-card-avatar>
+           <md-card-header-text>
+             <span class="md-title">Title</span>
+             <span class="md-subhead">subhead</span>
+           </md-card-header-text>
+         </md-card-header>
+         <img ng-src="{{imagePath}}" class="md-card-image" alt="tech image">
+         <md-card-title>
+           <md-card-title-text>
+             <span class="md-headline">In-card actions</span>
+             <span class="md-subhead">Description</span>
+           </md-card-title-text>
+         </md-card-title>
+         <md-card-actions layout="row" layout-align="start center">
+           <md-button>Action 1</md-button>
+           <md-button>Action 2</md-button>
+         </md-card-actions>
+         <md-card-content>
+           <p>
+             The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+             two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+           </p>
+         </md-card-content>
+       </md-card>
+     </div>
+   </md-content> -->
 
+<!--
 <md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"
         md-row-height-gt-md="1:1" md-row-height="4:3"
         md-gutter="8px" md-gutter-gt-sm="4px">
@@ -88,4 +146,4 @@
         </div>
       </md-list-item>
     </md-list>
-  </md-content>
+  </md-content> -->
